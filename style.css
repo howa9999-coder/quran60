@@ -41,6 +41,9 @@ body{
     width: 40px;
     height: 40px;
 }
+#click-to-search:hover{
+    background-color: rgb(146, 146, 223);
+}
 main{
     position: relative;
     top: 50px;
