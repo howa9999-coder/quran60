@@ -202,8 +202,36 @@ function audioPlayer(link, id){
 
 
 //Switch text to voice
+function speakText(element) {
+    // Get the text content of the clicked element
+    const text = element.textContent;
 
-    function speakText(element) {
+    // Create a new speech synthesis utterance
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    // Set the language to Arabic
+    utterance.lang = 'ar-SA'; // Standard Arabic (Saudi Arabia)
+
+    // Ensure voices are loaded (some browsers need this step)
+    speechSynthesis.onvoiceschanged = () => {
+      const voices = speechSynthesis.getVoices();
+      const arabicVoice = voices.find(voice => voice.lang.startsWith('ar')) || voices[0];
+      utterance.voice = arabicVoice;
+      window.speechSynthesis.speak(utterance);
+    };
+
+    // Speak the text
+    window.speechSynthesis.speak(utterance);
+  }
+
+  // Ensure the first interaction with the page allows speech synthesis
+  document.addEventListener('touchstart', () => {
+    if (!speechSynthesis.speaking) {
+      const testUtterance = new SpeechSynthesisUtterance('');
+      window.speechSynthesis.speak(testUtterance);
+    }
+  }, { once: true });
+/*     function speakText(element) {
         // Get the text content of the clicked element
         const text = element.textContent;
   
@@ -220,6 +248,6 @@ function audioPlayer(link, id){
   
         // Speak the text
         window.speechSynthesis.speak(utterance);
-      }
+      } */
 
 
