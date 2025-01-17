@@ -18,6 +18,7 @@ h5{
 }
 h2{
     margin-right: 20px;
+    cursor: pointer;
 }
 body{
     margin: 0;
@@ -29,7 +30,17 @@ body{
     background-repeat: no-repeat;
     min-height: 100vh;
 }
-
+#click-to-search{
+    cursor: pointer;
+    margin-left: 10px;
+    border: none;
+    border-radius: 50px;
+    margin: 10px;
+}
+#click-to-search > img{
+    width: 40px;
+    height: 40px;
+}
 main{
     position: relative;
     top: 50px;
